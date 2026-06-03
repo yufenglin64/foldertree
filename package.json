@@ -1,6 +1,6 @@
 {
   "name": "foldertree",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "文件夹树查看器 — 把文件夹路径放进去，自动生成漂亮清晰的目录树",
   "main": "main.js",
   "author": "林宇锋 (lyfnb6666)",
@@ -10,7 +10,7 @@
     "dist": "electron-builder",
     "dist:win": "electron-builder --win",
     "dist:mac": "electron-builder --mac",
-    "dist:linux": "electron-builder --linux AppImage"
+    "dist:linux": "electron-builder --linux AppImage deb"
   },
   "build": {
     "appId": "com.linyufeng.foldertree",
@@ -28,7 +28,7 @@
       "shortcutName": "FolderTree"
     },
     "mac": { "target": "dmg", "icon": "renderer/icon.png" },
-    "linux": { "target": "AppImage", "icon": "renderer/icon.png" }
+    "linux": { "target": ["AppImage", "deb"], "icon": "renderer/icon.png" }
   },
   "devDependencies": {
     "electron": "^33.2.0",
