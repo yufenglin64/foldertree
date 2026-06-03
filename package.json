@@ -28,7 +28,7 @@
       "shortcutName": "FolderTree"
     },
     "mac": { "target": "dmg", "icon": "renderer/icon.png" },
-    "linux": { "target": ["AppImage", "deb"], "icon": "renderer/icon.png" }
+    "linux": { "target": ["AppImage", "deb"], "icon": "renderer/icon.png", "maintainer": "yufenglin64 <yufenglin64@users.noreply.github.com>" }
   },
   "devDependencies": {
     "electron": "^33.2.0",
