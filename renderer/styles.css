@@ -220,6 +220,14 @@ body:not(.light) .brand-name { filter: brightness(0) invert(1); opacity: .92; } 
 .menu-title { font-size: 11.5px; color: var(--muted); padding: 4px 12px 6px; }
 .menu-item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
 .menu-item.active::after { content: ' ✓'; }
+.limit-custom { display: flex; gap: 6px; padding: 7px 4px 3px; }
+.limit-custom[hidden] { display: none; }
+.limit-input {
+  width: 130px; min-width: 0; background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 7px; padding: 6px 8px; font-size: 13px;
+}
+.limit-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.limit-custom .btn { padding: 6px 10px; }
 
 /* ===== 标签栏 ===== */
 .tabbar {

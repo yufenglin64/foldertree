@@ -3,8 +3,14 @@ const path = require('path');
 const fs = require('fs');
 const fsp = fs.promises;
 
-// 扫描上限，防止超大目录卡死界面
-const MAX_NODES = 100000;
+// 默认扫描上限，防止超大目录卡死界面
+const DEFAULT_MAX_NODES = 100000;
+const HARD_MAX_NODES = 1000000;
+function normalizeMaxNodes(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n) || n < 1) return DEFAULT_MAX_NODES;
+  return Math.min(Math.floor(n), HARD_MAX_NODES);
+}
 
 // Native dialog labels
 const MAIN_I18N = {
@@ -68,8 +74,8 @@ async function scanDir(dirPath, opts, counter) {
 
   const children = [];
   for (const ent of entries) {
-    if (counter.count >= MAX_NODES) {
-      return { error: 'SCAN_LIMIT', message: mt(opts.lang, 'scanLimit'), limit: MAX_NODES, count: counter.count };
+    if (counter.count >= counter.limit) {
+      return { error: 'SCAN_LIMIT', message: mt(opts.lang, 'scanLimit'), limit: counter.limit, count: counter.count };
     }
     if (!opts.showHidden && ent.name.startsWith('.')) continue;
     if (opts.ignore && opts.ignore.includes(ent.name)) continue;
@@ -148,7 +154,7 @@ ipcMain.handle('fs:scan', async (_e, dirPath, opts = {}) => {
   }
   if (!rootStat.isDirectory()) return { error: 'NOT_DIR' };
 
-  const counter = { count: 0 };
+  const counter = { count: 0, limit: normalizeMaxNodes(opts.maxNodes) };
   const t0 = Date.now();
   const sub = await scanDir(dirPath, opts, counter);
   if (sub.error) return { error: sub.error, message: sub.message, limit: sub.limit, count: sub.count };

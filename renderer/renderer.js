@@ -30,7 +30,8 @@ const LANGS = {
     toggleHidden: 'Show/hide hidden files', switchLanguage: 'Switch language', toggleTheme: 'Toggle light/dark theme', minimize: 'Minimize', maximize: 'Maximize', close: 'Close',
     emptyTitle: 'Drag in or open a folder', emptySub: 'Generate a zoomable mind-map folder tree', emptyHint: 'You can also drag a folder here · one folder per tab', scanning: 'Scanning…', zoomOut: 'Zoom out', zoomIn: 'Zoom in', hintBar: 'Wheel to zoom · Drag to pan · Right-click menu (lock/copy path, etc.) · Double-click to expand/open · Drag the card edge to widen · Hover 1 second for details · Esc clears all locks', ready: 'Ready', dropOverlay: 'Release — open this folder in a new tab', hiddenOn: '✓ Hidden files shown', hiddenOff: '✓ Hidden files hidden',
     folder: 'Folder', file: 'File', typedFile: '{ext} file', newTab: 'New tab', closeTabTitle: 'Close', blankTabTitle: 'Blank tab', addTabTitle: 'New tab',
-    refreshing: 'Refreshing…', refreshFailed: 'Refresh failed: {error}', refreshed: '✓ Refreshed', standardLayout: 'Position is already in the standard layout', resetPositionDone: '✓ Position reset', scanLimitFallback: 'This folder is too large to load safely. FolderTree stopped scanning. Please choose a smaller folder or narrow the directory first.',
+    refreshing: 'Refreshing…', refreshFailed: 'Refresh failed: {error}', refreshed: '✓ Refreshed', standardLayout: 'Position is already in the standard layout', resetPositionDone: '✓ Position reset', scanLimitFallback: 'This folder is too large to load safely. FolderTree stopped scanning at {limit} items. Please choose a smaller folder, narrow the directory, or raise the scan limit carefully.',
+    scanLimitTitle: 'Scan item limit', scanLimitMenuTitle: 'Scan item limit', customLimit: 'Custom…', applyLimit: 'Apply', customLimitPrompt: 'Enter the maximum number of items to scan (1–1,000,000):', invalidLimit: 'Please enter a number between 1 and 1,000,000.', highLimitWarning: 'Scanning more than 100,000 items may use more memory and make the app slower. Continue with {limit} items?', scanLimitSet: '✓ Scan limit set to {limit} items',
     emptyCannotRead: 'Cannot read this folder ({error})', cannotRead: 'Cannot read: {error}', stats: '{dirs} folders · {files} files · {size} total · {nodes} items', matches: '{count} matches', noMatches: 'No matches', matchPos: '{index}/{total} matches',
     gripTitle: 'Drag to resize the card and show the full name', copyFullPath: 'Copy full path', copyName: 'Copy name', unlockPath: 'Unlock path', lockPath: 'Lock path and highlight', resetPosition: 'Reset position', searchUnderFolder: 'Search within this folder', openFolderSystem: 'Open folder with system', openSystem: 'Open with system', showInFolder: 'Show in file manager', expandChildren: 'Expand all children', collapseChildren: 'Collapse all children',
     closeOtherTabs: 'Close other tabs', closeRightTabs: 'Close tabs to the right', newBlankTab: 'New blank tab', reload: 'Reload', copyFolderPath: 'Copy folder path', searchInScope: 'Search in “{name}”…',
@@ -46,7 +47,8 @@ const LANGS = {
     toggleHidden: '显示/隐藏 隐藏文件', switchLanguage: '切换语言', toggleTheme: '切换 亮色/暗色', minimize: '最小化', maximize: '最大化', close: '关闭',
     emptyTitle: '拖入或打开一个文件夹', emptySub: '生成可缩放的思维导图式目录', emptyHint: '也可以直接把文件夹拖到这里 · 每个文件夹一个标签页', scanning: '正在扫描…', zoomOut: '缩小', zoomIn: '放大', hintBar: '滚轮缩放 · 拖拽平移 · 右键菜单(锁定/复制路径等) · 双击展开/打开 · 拖卡片右侧加宽 · 悬停 1 秒看详情 · Esc 清除全部锁定', ready: '就绪', dropOverlay: '松开 — 新标签打开此文件夹', hiddenOn: '✓ 已显示隐藏文件', hiddenOff: '✓ 已隐藏隐藏文件',
     folder: '文件夹', file: '文件', typedFile: '{ext} 文件', newTab: '新标签', closeTabTitle: '关闭', blankTabTitle: '空白标签', addTabTitle: '新建标签页',
-    refreshing: '正在刷新…', refreshFailed: '刷新失败：{error}', refreshed: '✓ 已刷新', standardLayout: '位置已是标准布局', resetPositionDone: '✓ 已重置位置', scanLimitFallback: '这个文件夹太大，无法安全加载。FolderTree 已停止扫描。请重新拖入更小的文件夹，或先缩小目录范围。',
+    refreshing: '正在刷新…', refreshFailed: '刷新失败：{error}', refreshed: '✓ 已刷新', standardLayout: '位置已是标准布局', resetPositionDone: '✓ 已重置位置', scanLimitFallback: '这个文件夹太大，无法安全加载。FolderTree 已在 {limit} 项时停止扫描。请重新拖入更小的文件夹、缩小目录范围，或谨慎提高扫描上限。',
+    scanLimitTitle: '扫描数量上限', scanLimitMenuTitle: '扫描数量上限', customLimit: '自定义…', applyLimit: '应用', customLimitPrompt: '请输入最多扫描的项目数量（1–1,000,000）：', invalidLimit: '请输入 1 到 1,000,000 之间的数字。', highLimitWarning: '扫描超过 100,000 项可能占用更多内存并让软件变慢。确定使用 {limit} 项上限吗？', scanLimitSet: '✓ 扫描上限已设为 {limit} 项',
     emptyCannotRead: '无法读取此文件夹（{error}）', cannotRead: '无法读取：{error}', stats: '{dirs} 个文件夹 · {files} 个文件 · 共 {size} · {nodes} 项', matches: '{count} 个匹配', noMatches: '无匹配', matchPos: '{index}/{total} 个匹配',
     gripTitle: '拖动调整卡片宽度以显示完整名称', copyFullPath: '复制完整路径', copyName: '复制名称', unlockPath: '解锁路径', lockPath: '锁定路径并高亮', resetPosition: '重置位置', searchUnderFolder: '在此文件夹下搜索', openFolderSystem: '用系统打开文件夹', openSystem: '用系统打开', showInFolder: '在文件管理器中显示', expandChildren: '展开全部子级', collapseChildren: '折叠全部子级',
     closeOtherTabs: '关闭其他标签', closeRightTabs: '关闭右侧标签', newBlankTab: '新建空白标签', reload: '重新加载', copyFolderPath: '复制文件夹路径', searchInScope: '在「{name}」下搜索…',
@@ -71,6 +73,7 @@ function setLang(lang, save = true) {
   currentLang = lang === 'zh' ? 'zh' : 'en';
   if (save) { try { localStorage.setItem('ft-lang', currentLang); } catch (_) {} }
   applyStaticI18n();
+  if (typeof syncScanLimitMenu === 'function') syncScanLimitMenu();
   if (typeof syncLayoutPicker === 'function') syncLayoutPicker(layoutSel.value);
   if (typeof updateScopeChip === 'function') updateScopeChip(activeTab());
   if (typeof renderTabs === 'function') renderTabs();
@@ -86,12 +89,16 @@ const NODE_H = 34, PAD = 60;
 const LOD_CAP = 1000;               // 视口内节点超过此数则只显示文件夹骨架
 const DOT_SCALE = 0.5;              // 低于此缩放级别 → 卡片转为圆点（避免文字重叠）
 const VIEW_MARGIN = 700;            // 预渲染余量(屏幕px)：视口在此范围内移动不重建 DOM
+const DEFAULT_SCAN_LIMIT = 100000;
+const HIGH_SCAN_LIMIT = 100000;
+const MAX_SCAN_LIMIT = 1000000;
 
 /* ===== 状态 ===== */
 let tabs = [];
 let activeId = null;
 let tabSeq = 0;
 let showHidden = false;
+let scanLimit = DEFAULT_SCAN_LIMIT;
 let searchTerm = '';
 
 function activeTab() { return tabs.find((t) => t.id === activeId) || null; }
@@ -109,6 +116,30 @@ function escapeHtml(s) { return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&a
 function basename(p) { return p.replace(/[\\/]+$/, '').split(/[\\/]/).pop() || p; }
 function parentDir(p) { const norm = p.replace(/[\\/]+$/, ''); const i = Math.max(norm.lastIndexOf('/'), norm.lastIndexOf('\\')); return i > 0 ? norm.slice(0, i) : norm; }
 function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+function fmtInt(n) { return Number(n || 0).toLocaleString(currentLang === 'zh' ? 'zh-CN' : 'en-US'); }
+function normalizeScanLimit(value) {
+  const n = Number(String(value).replace(/,/g, '').trim());
+  if (!Number.isFinite(n) || n < 1 || n > MAX_SCAN_LIMIT) return null;
+  return Math.floor(n);
+}
+function confirmHighScanLimit(value) {
+  return value <= HIGH_SCAN_LIMIT || window.confirm(tr('highLimitWarning', { limit: fmtInt(value) }));
+}
+function syncScanLimitMenu() {
+  const btn = $('btnLimit');
+  if (btn) btn.textContent = fmtInt(scanLimit);
+  const menu = $('limitMenu');
+  if (menu) menu.querySelectorAll('.limit-item').forEach((it) => it.classList.toggle('active', Number(it.dataset.limit) === scanLimit));
+}
+function setScanLimit(value, save = true, announce = true) {
+  const next = normalizeScanLimit(value);
+  if (!next) { window.alert(tr('invalidLimit')); return false; }
+  scanLimit = next;
+  if (save) { try { localStorage.setItem('ft-scan-limit', String(scanLimit)); } catch (_) {} }
+  syncScanLimitMenu();
+  if (announce) statText.textContent = tr('scanLimitSet', { limit: fmtInt(scanLimit) });
+  return true;
+}
 
 const ICONS = {
   dir: '📁', dirOpen: '📂',
@@ -130,7 +161,7 @@ function typeLabel(n) { return n.isDir ? tr('folder') : (n.ext ? tr('typedFile',
 
 /* ===== 标签页 ===== */
 function newTabObj(path) {
-  return { id: ++tabSeq, path: path || null, name: path ? basename(path) : tr('newTab'), root: null, stats: null, error: null, layout: layoutSel.value, transform: null, target: null, search: '', locks: new Set(), searchScope: null, _layout: null, _rendered: [], _matches: [], _matchIdx: -1 };
+  return { id: ++tabSeq, path: path || null, name: path ? basename(path) : tr('newTab'), root: null, stats: null, error: null, layout: layoutSel.value, transform: null, target: null, search: '', locks: new Set(), searchScope: null, searchFocus: null, _layout: null, _rendered: [], _matches: [], _matchIdx: -1 };
 }
 function newBlankTab() { const t = newTabObj(null); tabs.push(t); activeId = t.id; searchInput.value = ''; renderTabs(); render(); }
 function loadIntoTarget(path) {
@@ -150,16 +181,17 @@ async function refreshActive() {
   (function walk(n) { if (!n) return; if (n.isDir && n._open) openPaths.add(n.path); if (n._dx || n._dy) userPos.set(n.path, [n._dx, n._dy]); if (n.children) n.children.forEach(walk); })(tab.root);
   for (const ln of tab.locks) if (ln.path) lockPaths.add(ln.path);
   const scopePath = tab.searchScope ? tab.searchScope.path : null;
+  const searchFocusPath = tab.searchFocus ? tab.searchFocus.path : null;
   statText.textContent = tr('refreshing');
   let res;
-  try { res = await window.api.scan(tab.path, { showHidden, lang: currentLang }); }
+  try { res = await window.api.scan(tab.path, { showHidden, lang: currentLang, maxNodes: scanLimit }); }
   catch (err) { refreshing = false; statText.textContent = tr('refreshFailed', { error: err && err.message ? err.message : err }); return; }
   refreshing = false;
   if (res.error) {
-    const msg = res.error === 'SCAN_LIMIT' ? (res.message || tr('scanLimitFallback')) : tr('refreshFailed', { error: res.error });
+    const msg = res.error === 'SCAN_LIMIT' ? tr('scanLimitFallback', { limit: fmtInt(res.limit || scanLimit) }) : tr('refreshFailed', { error: res.error });
     statText.textContent = msg;
     if (res.error === 'SCAN_LIMIT') {
-      tab.root = null; tab.error = msg; tab.path = null; tab.name = tr('newTab'); tab.stats = null; tab.transform = null; tab.target = null; tab.search = ''; tab.locks = new Set(); tab.searchScope = null; tab._layout = null;
+      tab.root = null; tab.error = msg; tab.path = null; tab.name = tr('newTab'); tab.stats = null; tab.transform = null; tab.target = null; tab.search = ''; tab.locks = new Set(); tab.searchScope = null; tab.searchFocus = null; tab._layout = null;
       if (activeId === tab.id) { searchInput.value = ''; updateScopeChip(tab); window.alert(msg); renderTabs(); render(); }
     }
     return;
@@ -177,6 +209,7 @@ async function refreshActive() {
   tab.root._open = true;            // 根始终展开
   tab.locks = new Set(); for (const p of lockPaths) { const nn = byPath.get(p); if (nn) tab.locks.add(nn); }  // 按路径恢复锁定
   tab.searchScope = scopePath ? (byPath.get(scopePath) || null) : null;   // 恢复范围
+  tab.searchFocus = searchFocusPath ? (byPath.get(searchFocusPath) || null) : null;
   tab._layout = null;
   if (activeId === tab.id) updateScopeChip(tab);
   render({ relayout: true });       // tab.transform 未变 → 视角保持；search 文本也保留
@@ -184,19 +217,19 @@ async function refreshActive() {
 }
 async function loadTab(tab) {
   if (activeId === tab.id) { emptyEl.hidden = true; loadingEl.hidden = false; statText.textContent = tr('scanning'); }
-  let res = await window.api.scan(tab.path, { showHidden, lang: currentLang });
-  if (res.error === 'NOT_DIR') { tab.path = parentDir(tab.path); tab.name = basename(tab.path); res = await window.api.scan(tab.path, { showHidden, lang: currentLang }); }
+  let res = await window.api.scan(tab.path, { showHidden, lang: currentLang, maxNodes: scanLimit });
+  if (res.error === 'NOT_DIR') { tab.path = parentDir(tab.path); tab.name = basename(tab.path); res = await window.api.scan(tab.path, { showHidden, lang: currentLang, maxNodes: scanLimit }); }
   if (activeId === tab.id) loadingEl.hidden = true;
   if (res.error) {
-    const msg = res.error === 'SCAN_LIMIT' ? (res.message || tr('scanLimitFallback')) : res.error;
-    tab.root = null; tab.error = msg; tab.path = null; tab.name = tr('newTab'); tab.stats = null; tab.transform = null; tab.target = null; tab.search = ''; tab.locks = new Set(); tab.searchScope = null; tab._layout = null;
+    const msg = res.error === 'SCAN_LIMIT' ? tr('scanLimitFallback', { limit: fmtInt(res.limit || scanLimit) }) : res.error;
+    tab.root = null; tab.error = msg; tab.path = null; tab.name = tr('newTab'); tab.stats = null; tab.transform = null; tab.target = null; tab.search = ''; tab.locks = new Set(); tab.searchScope = null; tab.searchFocus = null; tab._layout = null;
     if (activeId === tab.id) { searchInput.value = ''; updateScopeChip(tab); if (res.error === 'SCAN_LIMIT') window.alert(msg); }
     renderTabs(); if (activeId === tab.id) render(); return;
   }
   tab.root = res.root; tab.stats = res.stats; tab.error = null;
   setParents(tab.root, null);   // 整棵树设置父指针 → isUnder/范围搜索对折叠的深层节点也有效
   setDefaultOpen(tab.root, 0);
-  tab.locks = new Set(); tab.searchScope = null; tab.transform = null; tab.target = null; tab.search = ''; tab._layout = null;
+  tab.locks = new Set(); tab.searchScope = null; tab.searchFocus = null; tab.transform = null; tab.target = null; tab.search = ''; tab._layout = null;
   if (activeId === tab.id) { searchInput.value = ''; updateScopeChip(tab); }
   renderTabs();
   if (activeId === tab.id) render({ fit: true, relayout: true });
@@ -623,7 +656,7 @@ function bindNode(t, el, n) {
     applyHighlight(t, n);
     clearTimeout(hoverTimer); hoverTimer = setTimeout(() => showTooltip(n, el), 1000);
   });
-  el.addEventListener('mouseleave', () => { clearTimeout(hoverTimer); hideTooltip(); applyHighlight(t); });
+  el.addEventListener('mouseleave', () => { if (t.searchFocus === n) t.searchFocus = null; clearTimeout(hoverTimer); hideTooltip(); applyHighlight(t); });
 }
 // 锁定/解锁路径；锁定时把"范围搜索"指向该节点
 function toggleLock(t, n) {
@@ -724,7 +757,9 @@ function clearHL() {
 }
 function applyHighlight(t, hover) {
   clearHL();
-  const focus = [...t.locks]; if (hover && !focus.includes(hover)) focus.push(hover);
+  const focus = [...t.locks];
+  if (t.searchFocus && !focus.includes(t.searchFocus)) focus.push(t.searchFocus);
+  if (hover && !focus.includes(hover)) focus.push(hover);
   if (!focus.length) return;
   // 节点：先标灰后代，再标黑路径（黑覆盖灰）
   for (const r of t._rendered) {
@@ -841,6 +876,12 @@ function flyTo(n) {
   renderScene(worldRect(t.target)); // 预渲染目标区域，节点滑入
   startLoop();
 }
+function focusSearchMatch(t, n) {
+  if (!t || !n) return;
+  t.searchFocus = n;
+  flyTo(n);
+  applyHighlight(t);
+}
 
 /* 滚轮缩放（平滑） */
 viewport.addEventListener('wheel', (e) => { e.preventDefault(); const r = viewport.getBoundingClientRect(); zoomBy(e.clientX - r.left, e.clientY - r.top, e.deltaY < 0 ? 1.18 : 1 / 1.18); }, { passive: false });
@@ -945,9 +986,10 @@ function setAutoRefresh(ms) {
   autoMenu.querySelectorAll('.auto-item').forEach((it) => it.classList.toggle('active', Number(it.dataset.ms) === ms));
 }
 $('btnRefresh').addEventListener('click', (e) => { e.stopPropagation(); refreshActive(); });
-$('btnRefresh').addEventListener('contextmenu', (e) => { e.preventDefault(); e.stopPropagation(); exportMenu.hidden = true; closeLayoutMenu(); autoMenu.hidden = !autoMenu.hidden; });
+$('btnRefresh').addEventListener('contextmenu', (e) => { e.preventDefault(); e.stopPropagation(); exportMenu.hidden = true; limitMenu.hidden = true; closeLayoutMenu(); autoMenu.hidden = !autoMenu.hidden; });
 autoMenu.addEventListener('click', (e) => { const it = e.target.closest('.auto-item'); if (it) { setAutoRefresh(Number(it.dataset.ms)); autoMenu.hidden = true; } });
 (function initAuto() { let ms = 0; try { ms = Number(localStorage.getItem('ft-auto')) || 0; } catch (_) {} setAutoRefresh(ms); })();
+(function initScanLimit() { let raw = DEFAULT_SCAN_LIMIT; try { raw = localStorage.getItem('ft-scan-limit') || DEFAULT_SCAN_LIMIT; } catch (_) {} setScanLimit(normalizeScanLimit(raw) || DEFAULT_SCAN_LIMIT, false, false); })();
 $('zoomReset').addEventListener('click', animateFit);
 $('zoomIn').addEventListener('click', () => zoomBy(viewport.clientWidth / 2, viewport.clientHeight / 2, 1.25));
 $('zoomOut').addEventListener('click', () => zoomBy(viewport.clientWidth / 2, viewport.clientHeight / 2, 1 / 1.25));
@@ -962,9 +1004,40 @@ $('winMax').addEventListener('click', () => window.api.win.maxtoggle());
 $('winClose').addEventListener('click', () => window.api.win.close());
 
 const exportMenu = $('exportMenu');
-$('btnExport').addEventListener('click', (e) => { e.stopPropagation(); autoMenu.hidden = true; closeLayoutMenu(); exportMenu.hidden = !exportMenu.hidden; });
+const limitMenu = $('limitMenu');
+$('btnExport').addEventListener('click', (e) => { e.stopPropagation(); autoMenu.hidden = true; limitMenu.hidden = true; closeLayoutMenu(); exportMenu.hidden = !exportMenu.hidden; });
 exportMenu.addEventListener('click', (e) => { const it = e.target.closest('.menu-item'); if (it) { doExport(it.dataset.fmt); exportMenu.hidden = true; } });
-document.addEventListener('click', () => { exportMenu.hidden = true; autoMenu.hidden = true; closeLayoutMenu(); closeCtxMenu(); });
+$('btnLimit').addEventListener('click', (e) => { e.stopPropagation(); exportMenu.hidden = true; autoMenu.hidden = true; closeLayoutMenu(); limitMenu.hidden = !limitMenu.hidden; });
+function applyCustomScanLimit() {
+  const input = $('limitInput');
+  const next = normalizeScanLimit(input ? input.value : '');
+  if (!next) { window.alert(tr('invalidLimit')); if (input) input.focus(); return; }
+  if (next > HIGH_SCAN_LIMIT && !confirmHighScanLimit(next)) { if (input) input.focus(); return; }
+  setScanLimit(next);
+  $('limitCustom').hidden = true;
+  limitMenu.hidden = true;
+}
+limitMenu.addEventListener('click', (e) => {
+  const customBox = e.target.closest('#limitCustom');
+  if (customBox) { e.stopPropagation(); return; }
+  const it = e.target.closest('.limit-item'); if (!it) return;
+  e.stopPropagation();
+  if (it.dataset.limit === 'custom') {
+    const box = $('limitCustom'), input = $('limitInput');
+    box.hidden = !box.hidden;
+    if (!box.hidden && input) { input.value = String(scanLimit); setTimeout(() => { input.focus(); input.select(); }, 0); }
+    return;
+  }
+  const next = normalizeScanLimit(it.dataset.limit);
+  if (!next) { window.alert(tr('invalidLimit')); limitMenu.hidden = true; return; }
+  if (next > HIGH_SCAN_LIMIT && !confirmHighScanLimit(next)) { limitMenu.hidden = true; return; }
+  setScanLimit(next);
+  $('limitCustom').hidden = true;
+  limitMenu.hidden = true;
+});
+$('limitApply').addEventListener('click', (e) => { e.stopPropagation(); applyCustomScanLimit(); });
+$('limitInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); applyCustomScanLimit(); } });
+document.addEventListener('click', () => { exportMenu.hidden = true; autoMenu.hidden = true; limitMenu.hidden = true; $('limitCustom').hidden = true; closeLayoutMenu(); closeCtxMenu(); });
 viewport.addEventListener('wheel', closeCtxMenu, { passive: true });
 
 // 范围搜索标签 ×：取消范围 → 恢复全文搜索（保留高亮锁定）
@@ -976,22 +1049,22 @@ searchInput.addEventListener('input', () => {
   clearTimeout(searchTimer);
   searchTimer = setTimeout(() => {
     const t = activeTab(); if (!t || !t.root) return;
-    t.search = searchInput.value.trim().toLowerCase(); t._matchIdx = -1;
+    t.search = searchInput.value.trim().toLowerCase(); t._matchIdx = -1; t.searchFocus = null;
     render();   // 是否重排由 render 按 layoutDirty 自动判断（避免每次按键都跑碰撞算法）
-    if (t.search && t._matches.length) { t._matchIdx = 0; flyTo(t._matches[0]); searchCount.textContent = tr('matchPos', { index: 1, total: t._matches.length }); }
+    if (t.search && t._matches.length) { t._matchIdx = 0; focusSearchMatch(t, t._matches[0]); searchCount.textContent = tr('matchPos', { index: 1, total: t._matches.length }); }
   }, 180);
 });
 $('searchClear').addEventListener('click', () => {
   searchInput.value = ''; $('searchClear').hidden = true; searchInput.focus();
-  const t = activeTab(); if (t) { t.search = ''; render(); }
+  const t = activeTab(); if (t) { t.search = ''; t.searchFocus = null; render(); }
 });
 searchInput.addEventListener('keydown', (e) => {
   const t = activeTab();
   if (e.key === 'Enter' && t && t._matches && t._matches.length) {
     e.preventDefault();
     t._matchIdx = ((t._matchIdx || 0) + (e.shiftKey ? -1 : 1) + t._matches.length) % t._matches.length;
-    flyTo(t._matches[t._matchIdx]); searchCount.textContent = tr('matchPos', { index: t._matchIdx + 1, total: t._matches.length });
-  } else if (e.key === 'Escape') { searchInput.value = ''; $('searchClear').hidden = true; if (t) t.search = ''; render({ relayout: true }); searchInput.blur(); }
+    focusSearchMatch(t, t._matches[t._matchIdx]); searchCount.textContent = tr('matchPos', { index: t._matchIdx + 1, total: t._matches.length });
+  } else if (e.key === 'Escape') { searchInput.value = ''; $('searchClear').hidden = true; if (t) { t.search = ''; t.searchFocus = null; } render({ relayout: true }); searchInput.blur(); }
 });
 
 document.addEventListener('keydown', (e) => {
@@ -1003,8 +1076,8 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && document.activeElement !== searchInput) {
     closeCtxMenu(); closeLayoutMenu();
     const t = activeTab(); if (!t) return;
-    const had = (t.locks && t.locks.size) || t.searchScope || t.search;
-    searchInput.value = ''; $('searchClear').hidden = true; t.search = '';   // ESC 同时清除搜索
+    const had = (t.locks && t.locks.size) || t.searchScope || t.search || t.searchFocus;
+    searchInput.value = ''; $('searchClear').hidden = true; t.search = ''; t.searchFocus = null;   // ESC 同时清除搜索
     if (t.locks) t.locks.clear(); t.searchScope = null; updateScopeChip(t);
     if (had) render();
   }

@@ -37,6 +37,21 @@
           <div class="menu-item auto-item" data-ms="1800000" data-i18n="every30m">Every 30 minutes</div>
         </div>
       </div>
+      <div class="menu-wrap">
+        <button class="btn icon" id="btnLimit" data-i18n-title="scanLimitTitle" title="Scan item limit">⛓</button>
+        <div class="menu" id="limitMenu" hidden>
+          <div class="menu-title" data-i18n="scanLimitMenuTitle">Scan item limit</div>
+          <div class="menu-item limit-item" data-limit="100000">100,000</div>
+          <div class="menu-item limit-item" data-limit="200000">200,000</div>
+          <div class="menu-item limit-item" data-limit="500000">500,000</div>
+          <div class="menu-sep"></div>
+          <div class="menu-item limit-item" data-limit="custom" data-i18n="customLimit">Custom…</div>
+          <div class="limit-custom" id="limitCustom" hidden>
+            <input id="limitInput" class="limit-input" type="number" min="1" max="1000000" step="1000" value="100000" />
+            <button class="btn" id="limitApply" type="button" data-i18n="applyLimit">Apply</button>
+          </div>
+        </div>
+      </div>
       <select id="layoutSel" class="layout-sel native-layout-sel" data-i18n-title="layoutShape" title="Layout shape" hidden>
         <option value="h" data-i18n="layoutH">Tree · Horizontal</option>
         <option value="v" data-i18n="layoutV">Tree · Vertical</option>
