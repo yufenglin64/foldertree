@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' file: data:; media-src 'self' file:" />
+  <title data-i18n="appTitle">FolderTree Viewer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 顶部工具栏 -->
+  <header class="toolbar">
+    <div class="brand">
+      <img class="logo" src="logo.png" alt="FolderTree" />
+      <img class="brand-name" src="name.png" alt="FolderTree" />
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <span class="scope-chip" id="scopeChip" hidden><span class="scope-name" id="scopeName"></span><span class="scope-x" id="scopeX" data-i18n-title="cancelScopeSearch" title="Cancel scoped search">×</span></span>
+      <input id="search" class="search" type="text" data-i18n-placeholder="searchCurrentTab" placeholder="Search current tab…" spellcheck="false" />
+      <span class="search-clear" id="searchClear" data-i18n-title="clearSearch" title="Clear search" hidden>×</span>
+      <span class="search-count muted" id="searchCount"></span>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="btnOpen" data-i18n="openFolder" data-i18n-title="openFolderTitle" title="Open folder in a new tab (Ctrl+O)">Open Folder</button>
+      <button class="btn icon" id="btnExpand" data-i18n-title="expandAll" title="Expand all">⊕</button>
+      <button class="btn icon" id="btnCollapse" data-i18n-title="collapseAll" title="Collapse all">⊖</button>
+      <button class="btn icon" id="btnFit" data-i18n-title="fitWindow" title="Fit to window (center)">⊡</button>
+      <div class="menu-wrap">
+        <button class="btn icon" id="btnRefresh" data-i18n-title="refreshTitle" title="Left click: refresh now · Right click: auto-refresh settings">⟳</button>
+        <div class="menu" id="autoMenu" hidden>
+          <div class="menu-title" data-i18n="autoRefreshTitle">Auto-refresh (current folder only)</div>
+          <div class="menu-item auto-item" data-ms="0" data-i18n="off">Off</div>
+          <div class="menu-item auto-item" data-ms="10000" data-i18n="every10s">Every 10 seconds</div>
+          <div class="menu-item auto-item" data-ms="60000" data-i18n="every1m">Every 1 minute</div>
+          <div class="menu-item auto-item" data-ms="300000" data-i18n="every5m">Every 5 minutes</div>
+          <div class="menu-item auto-item" data-ms="600000" data-i18n="every10m">Every 10 minutes</div>
+          <div class="menu-item auto-item" data-ms="1800000" data-i18n="every30m">Every 30 minutes</div>
+        </div>
+      </div>
+      <select id="layoutSel" class="layout-sel native-layout-sel" data-i18n-title="layoutShape" title="Layout shape" hidden>
+        <option value="h" data-i18n="layoutH">Tree · Horizontal</option>
+        <option value="v" data-i18n="layoutV">Tree · Vertical</option>
+        <option value="radial" data-i18n="layoutRadial">Radial · Sphere</option>
+      </select>
+      <div class="layout-picker" id="layoutPicker" data-i18n-title="layoutShape" title="Layout shape">
+        <button class="layout-current" id="layoutCurrent" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="layout-ico">🌳</span><span class="layout-text">Tree · Horizontal</span><span class="layout-arrow">⌄</span>
+        </button>
+        <div class="layout-menu" id="layoutMenu" role="listbox" hidden>
+          <div class="layout-option active" role="option" data-value="h" data-ico="🌳" aria-selected="true"><span>🌳</span><div><b data-i18n="layoutH">Tree · Horizontal</b><em data-i18n="layoutHDesc">Expands left to right, ideal for wide screens</em></div></div>
+          <div class="layout-option" role="option" data-value="v" data-ico="🌲" aria-selected="false"><span>🌲</span><div><b data-i18n="layoutV">Tree · Vertical</b><em data-i18n="layoutVDesc">Expands top to bottom, making hierarchy clear</em></div></div>
+          <div class="layout-option" role="option" data-value="radial" data-ico="🔵" aria-selected="false"><span>🔵</span><div><b data-i18n="layoutRadial">Radial · Sphere</b><em data-i18n="layoutRadialDesc">Spreads outward from the center for big-picture views</em></div></div>
+        </div>
+      </div>
+      <div class="menu-wrap">
+        <button class="btn icon" id="btnExport" data-i18n-title="export" title="Export">⤓</button>
+        <div class="menu" id="exportMenu" hidden>
+          <div class="menu-item" data-fmt="txt" data-i18n="exportTxt">Export as text tree (.txt)</div>
+          <div class="menu-item" data-fmt="md" data-i18n="exportMd">Export as Markdown (.md)</div>
+          <div class="menu-item" data-fmt="html" data-i18n="exportHtml">Export as webpage (.html)</div>
+          <div class="menu-item" data-fmt="json" data-i18n="exportJson">Export as JSON (.json)</div>
+          <div class="menu-sep"></div>
+          <div class="menu-item" data-fmt="copy" data-i18n="copyTextTree">Copy text tree to clipboard</div>
+        </div>
+      </div>
+      <button class="btn icon" id="btnHidden" data-i18n-title="toggleHidden" title="Show/hide hidden files">◌</button>
+      <button class="btn icon" id="btnLang" data-i18n-title="switchLanguage" title="Switch language">EN</button>
+      <button class="btn icon" id="btnTheme" data-i18n-title="toggleTheme" title="Toggle light/dark theme">☾</button>
+    </div>
+    <div class="win-ctl">
+      <button class="wbtn" id="winMin" data-i18n-title="minimize" title="Minimize"><svg width="11" height="11" viewBox="0 0 11 11"><rect x="1.5" y="5" width="8" height="1.3" rx="0.6" fill="currentColor"/></svg></button>
+      <button class="wbtn" id="winMax" data-i18n-title="maximize" title="Maximize"><svg width="11" height="11" viewBox="0 0 11 11"><rect x="1.8" y="1.8" width="7.4" height="7.4" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      <button class="wbtn close" id="winClose" data-i18n-title="close" title="Close"><svg width="11" height="11" viewBox="0 0 11 11"><path d="M2 2 L9 9 M9 2 L2 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
+    </div>
+  </header>
+
+  <!-- 标签栏 -->
+  <nav class="tabbar" id="tabbar"></nav>
+
+  <!-- 思维导图画布 -->
+  <main class="viewport" id="viewport">
+    <div class="canvas" id="canvas">
+      <svg class="edges" id="edges" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="nodes" id="nodes"></div>
+    </div>
+
+    <div class="empty" id="empty">
+      <div class="empty-emoji">🗂️</div>
+      <div class="empty-title" data-i18n="emptyTitle">Drag in or open a folder</div>
+      <div class="empty-sub muted" data-i18n="emptySub">Generate a zoomable mind-map folder tree</div>
+      <button class="btn primary big" id="btnOpenBig" data-i18n="openFolder">Open Folder</button>
+      <div class="empty-hint muted" data-i18n="emptyHint">You can also drag a folder here · one folder per tab</div>
+    </div>
+    <div class="loading" id="loading" hidden>
+      <div class="spinner"></div>
+      <div class="muted" data-i18n="scanning">Scanning…</div>
+    </div>
+
+    <div class="zoom-ctl" id="zoomCtl" hidden>
+      <button class="zbtn" id="zoomOut" data-i18n-title="zoomOut" title="Zoom out">－</button>
+      <span class="zlevel" id="zoomLevel">100%</span>
+      <button class="zbtn" id="zoomIn" data-i18n-title="zoomIn" title="Zoom in">＋</button>
+      <button class="zbtn" id="zoomReset" data-i18n-title="fitWindow" title="Fit to window">⊡</button>
+    </div>
+    <div class="hint-bar" id="hintBar" data-i18n="hintBar" hidden>Wheel to zoom · Drag to pan · Right-click menu (lock/copy path, etc.) · Double-click to expand/open · Drag the card edge to widen · Hover 1 second for details · Esc clears all locks</div>
+  </main>
+
+  <!-- 底部状态栏 -->
+  <footer class="statusbar" id="statusbar">
+    <span id="statText" class="muted" data-i18n="ready">Ready</span>
+  </footer>
+
+  <div class="tooltip" id="tooltip" hidden></div>
+
+  <!-- 右键菜单 -->
+  <div class="ctx-menu" id="ctxMenu" hidden></div>
+
+  <div class="drop-overlay" id="dropOverlay" hidden>
+    <div class="drop-inner" data-i18n="dropOverlay">Release — open this folder in a new tab</div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

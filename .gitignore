@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+out/
+build/*
+!build/installer.nsh
+
+# logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 设计源图（按需保留；如要随仓库分发请删掉下面两行）
+img.png
+img_1.png
